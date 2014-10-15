@@ -1,13 +1,13 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
-Project("{0A2DA5EF-FE53-D28E-06AE-EACBDC12BC92}") = "ImaginationLand", "Assembly-CSharp-firstpass.csproj", "{B79FAF17-4440-D1A8-32B9-F98BEF1519D0}"
+Project("{59F83861-BE31-4E74-90F5-0421D8CE5911}") = "Imaginationland", "Assembly-CSharp-firstpass.csproj", "{DF7E96DE-DC54-FB88-9296-55B1989FA06F}"
 EndProject
-Project("{0A2DA5EF-FE53-D28E-06AE-EACBDC12BC92}") = "ImaginationLand", "Assembly-CSharp.csproj", "{AD971616-FE14-3600-44A7-8E629AAC7D65}"
+Project("{59F83861-BE31-4E74-90F5-0421D8CE5911}") = "Imaginationland", "Assembly-CSharp.csproj", "{10B0DCF3-EA73-C500-C49A-D03A2C84C96F}"
 EndProject
-Project("{0A2DA5EF-FE53-D28E-06AE-EACBDC12BC92}") = "ImaginationLand", "Assembly-UnityScript-firstpass.unityproj", "{B6A43BC4-B6DB-FD7A-E273-7D05D48B51B7}"
+Project("{59F83861-BE31-4E74-90F5-0421D8CE5911}") = "Imaginationland", "Assembly-UnityScript-firstpass.unityproj", "{B4271B83-D631-1A06-BE5E-E8DCBDCDACE6}"
 EndProject
-Project("{0A2DA5EF-FE53-D28E-06AE-EACBDC12BC92}") = "ImaginationLand", "Assembly-UnityScript.unityproj", "{153E1209-D769-869C-E4CF-FBA1DED0C699}"
+Project("{59F83861-BE31-4E74-90F5-0421D8CE5911}") = "Imaginationland", "Assembly-UnityScript.unityproj", "{F299430B-99EE-A603-5F5C-7F8218D5E4B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,27 +15,27 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B79FAF17-4440-D1A8-32B9-F98BEF1519D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B79FAF17-4440-D1A8-32B9-F98BEF1519D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B79FAF17-4440-D1A8-32B9-F98BEF1519D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B79FAF17-4440-D1A8-32B9-F98BEF1519D0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AD971616-FE14-3600-44A7-8E629AAC7D65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AD971616-FE14-3600-44A7-8E629AAC7D65}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AD971616-FE14-3600-44A7-8E629AAC7D65}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AD971616-FE14-3600-44A7-8E629AAC7D65}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B6A43BC4-B6DB-FD7A-E273-7D05D48B51B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B6A43BC4-B6DB-FD7A-E273-7D05D48B51B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B6A43BC4-B6DB-FD7A-E273-7D05D48B51B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B6A43BC4-B6DB-FD7A-E273-7D05D48B51B7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{153E1209-D769-869C-E4CF-FBA1DED0C699}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{153E1209-D769-869C-E4CF-FBA1DED0C699}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{153E1209-D769-869C-E4CF-FBA1DED0C699}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{153E1209-D769-869C-E4CF-FBA1DED0C699}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF7E96DE-DC54-FB88-9296-55B1989FA06F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF7E96DE-DC54-FB88-9296-55B1989FA06F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF7E96DE-DC54-FB88-9296-55B1989FA06F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF7E96DE-DC54-FB88-9296-55B1989FA06F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10B0DCF3-EA73-C500-C49A-D03A2C84C96F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10B0DCF3-EA73-C500-C49A-D03A2C84C96F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10B0DCF3-EA73-C500-C49A-D03A2C84C96F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10B0DCF3-EA73-C500-C49A-D03A2C84C96F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4271B83-D631-1A06-BE5E-E8DCBDCDACE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4271B83-D631-1A06-BE5E-E8DCBDCDACE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4271B83-D631-1A06-BE5E-E8DCBDCDACE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4271B83-D631-1A06-BE5E-E8DCBDCDACE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F299430B-99EE-A603-5F5C-7F8218D5E4B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F299430B-99EE-A603-5F5C-7F8218D5E4B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F299430B-99EE-A603-5F5C-7F8218D5E4B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F299430B-99EE-A603-5F5C-7F8218D5E4B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-			GlobalSection(MonoDevelopProperties) = preSolution
+				GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
