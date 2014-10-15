@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class CharacterController : MonoBehaviour {
@@ -14,6 +14,8 @@ public class CharacterController : MonoBehaviour {
 	public GameObject oneWay;
 	EdgeCollider2D col;
 	private bool hasFloor = false;
+	//The line to project the placement of blocks
+	public LineRenderer projLine;
 
 	// Use this for initialization
 	void Start () {
@@ -65,17 +67,33 @@ public class CharacterController : MonoBehaviour {
 			col.enabled = true;
 		}
 
+		ProjectPlaceBlock ();
 		PlaceBlock();
 	}
 
-
+	//If the player releases the Space key then place a block
 	void PlaceBlock ()
 	{
-		if(numberOfPillows > 0 && Input.GetKeyDown(KeyCode.F))
+		if(numberOfPillows > 0 && Input.GetKeyUp(KeyCode.Space))
 		{
-			Instantiate(malleableFloor, new Vector3(transform.position.x + 5, transform.position.y, transform.position.z), new Quaternion(0,0,0,0));
+			Instantiate(malleableFloor, new Vector3(transform.position.x + 2, transform.position.y + .3f, transform.position.z), new Quaternion(0,0,0,0));
 			hasFloor = false;
 			numberOfPillows--;
+
+			projLine.enabled = false;
+		}
+	}
+
+	//If the player holds the space key then a line will be shown of the projected path that the block will take to be placed
+	void ProjectPlaceBlock()
+	{
+		if (numberOfPillows > 0 && Input.GetKey(KeyCode.Space))
+		{
+			projLine.SetPosition(0, transform.position);
+			Vector3 mp = new Vector3(transform.position.x + 2, transform.position.y + .3f, transform.position.z);
+			mp.z = 0;
+			projLine.SetPosition(1, mp);
+			projLine.enabled = true;
 		}
 	}
 
@@ -90,17 +108,24 @@ public class CharacterController : MonoBehaviour {
 			//transform.position = start;
 			Application.LoadLevel("Game");
 		}
+		if(other.gameObject.tag == "Cape")
+		{
+			hasCape = true;
+			Destroy(other.gameObject);
+			power = "CAPE";
+		}
 		if(other.gameObject.name == "Floor")
 		{
 			hasFloor = true;
 			numberOfPillows++;
 			Destroy(other.gameObject);
 		}
-		if(other.gameObject.tag == "Cape")
+		//If the player touches the hook image at the end of the level then destroy it and allow them to use the Grapple Hook script
+		if (other.gameObject.name == "HookImage")
 		{
-			hasCape = true;
+			Debug.Log("HERE");
 			Destroy(other.gameObject);
-			power = "CAPE";
-		} 
+			GetComponent<GrapplingHook>().enabled = true;
+		}
 	}
 }

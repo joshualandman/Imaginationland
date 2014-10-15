@@ -1,9 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GrapplingHook.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\CharacterController.cs">
     <Files>
-      <File FileName="D:\Imaginationland\Assets\Scripts\CameraFollow.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GrapplingHook.cs" Line="45" Column="33" />
+      <File FileName="Assets\Scripts\GrapplingHook.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\CharacterController.cs" Line="17" Column="47" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
