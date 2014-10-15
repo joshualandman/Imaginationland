@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class CharacterController : MonoBehaviour {
@@ -65,6 +65,7 @@ public class CharacterController : MonoBehaviour {
 			col.enabled = true;
 		}
 
+		ProjectPlaceBlock ();
 		PlaceBlock();
 	}
 
@@ -76,6 +77,20 @@ public class CharacterController : MonoBehaviour {
 			Instantiate(malleableFloor, new Vector3(transform.position.x + 5, transform.position.y, transform.position.z), new Quaternion(0,0,0,0));
 			hasFloor = false;
 			numberOfPillows--;
+		}
+	}
+
+	//
+	void ProjectPlaceBlock()
+	{
+		LineRenderer projLine;
+
+		if (numberOfPillows > 0 && Input.GetMouseButtonDown (0))
+		{
+			projLine.SetPosition(0, transform.position);
+			Vector3 mp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+			mp.z = 0;
+			projLine.SetPosition(1, mp);
 		}
 	}
 
