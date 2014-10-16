@@ -16,6 +16,9 @@ public class CharacterController : MonoBehaviour {
 	private bool hasFloor = false;
 	//The line to project the placement of blocks
 	public LineRenderer projLine;
+	public bool moveRight = true;
+	public GameObject grappleText;
+	public GameObject winText;
 
 	// Use this for initialization
 	void Start () {
@@ -29,12 +32,14 @@ public class CharacterController : MonoBehaviour {
 			Vector3 temp = transform.position;
 			temp.x += 0.1f;
 			transform.position = temp;
+			moveRight = true;
 		}
 		if(Input.GetKey(KeyCode.A))
 		{
 			Vector3 temp = transform.position;
 			temp.x -= 0.1f;
 			transform.position = temp;
+			moveRight = false;
 		}
 		if(Input.GetKeyDown(KeyCode.W))
 		{
@@ -69,6 +74,26 @@ public class CharacterController : MonoBehaviour {
 
 		ProjectPlaceBlock ();
 		PlaceBlock();
+		Win();
+		Escape ();
+	}
+
+	//Display win text
+	void Win()
+	{
+		if ((transform.position.y - .35) >= oneWay.transform.position.y)
+		{
+			winText.transform.position = new Vector3(0,6.5f,0);
+		}
+	}
+
+	//Handles exiting the game
+	void Escape()
+	{
+		if (Input.GetKeyUp (KeyCode.Escape))
+		{
+			Application.Quit();
+		}
 	}
 
 	//If the player releases the Space key then place a block
@@ -76,7 +101,15 @@ public class CharacterController : MonoBehaviour {
 	{
 		if(numberOfPillows > 0 && Input.GetKeyUp(KeyCode.Space))
 		{
-			Instantiate(malleableFloor, new Vector3(transform.position.x + 2, transform.position.y + .3f, transform.position.z), new Quaternion(0,0,0,0));
+			if(moveRight)
+			{
+				Instantiate(malleableFloor, new Vector3(transform.position.x + 2, transform.position.y + .3f, transform.position.z), new Quaternion(0,0,0,0));
+			}
+			else
+			{
+				Instantiate(malleableFloor, new Vector3(transform.position.x - 2, transform.position.y + .3f, transform.position.z), new Quaternion(0,0,0,0));
+			}
+
 			hasFloor = false;
 			numberOfPillows--;
 
@@ -89,8 +122,18 @@ public class CharacterController : MonoBehaviour {
 	{
 		if (numberOfPillows > 0 && Input.GetKey(KeyCode.Space))
 		{
+			Vector3 mp;
 			projLine.SetPosition(0, transform.position);
-			Vector3 mp = new Vector3(transform.position.x + 2, transform.position.y + .3f, transform.position.z);
+			if(moveRight)
+			{
+				mp = new Vector3(transform.position.x + 2, transform.position.y + .3f, transform.position.z);
+			}
+			else
+			{
+				mp = new Vector3(transform.position.x - 2, transform.position.y + .3f, transform.position.z);
+			}
+
+
 			mp.z = 0;
 			projLine.SetPosition(1, mp);
 			projLine.enabled = true;
@@ -123,7 +166,8 @@ public class CharacterController : MonoBehaviour {
 		//If the player touches the hook image at the end of the level then destroy it and allow them to use the Grapple Hook script
 		if (other.gameObject.name == "HookImage")
 		{
-			Debug.Log("HERE");
+			//Debug.Log("HERE");
+			Instantiate(grappleText, new Vector3(22, -1.7f, 0), new Quaternion(0,0,0,0));
 			Destroy(other.gameObject);
 			GetComponent<GrapplingHook>().enabled = true;
 		}
