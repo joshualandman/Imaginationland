@@ -26,7 +26,16 @@ public class GrapplingHook : MonoBehaviour {
 		{
 			timer++;
 			rope.enabled = true;
-			pos.x += 0.3f;
+
+			if(GetComponent<CharacterController>().moveRight)
+			{
+				pos.x += 0.3f;
+			}
+			else
+			{
+				pos.x -= 0.3f;
+			}
+
 			hook.transform.position = pos;
 
 			if(timer >= 30.0)
@@ -56,7 +65,16 @@ public class GrapplingHook : MonoBehaviour {
 	{
 		if(Input.GetKeyUp(KeyCode.G))
 		{
-			hook.transform.position = new Vector3(transform.position.x+1,transform.position.y,transform.position.z);
+			if(GetComponent<CharacterController>().moveRight)
+			{
+				hook.transform.position = new Vector3(transform.position.x+1,transform.position.y,transform.position.z);
+			}
+			else
+			{
+				hook.transform.position = new Vector3(transform.position.x-1,transform.position.y,transform.position.z);
+			}
+
+
 			//Instantiate(rope, hook.transform.position, new Quaternion(0,0,0,0));
 			//Instantiate(hook, new Vector3(transform.position.x, transform.position.y, transform.position.z), new Quaternion(0,0,0,0));
 			isHookFired = true;
