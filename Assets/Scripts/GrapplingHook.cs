@@ -56,7 +56,7 @@ public class GrapplingHook : MonoBehaviour {
 	{
 		if(Input.GetKeyUp(KeyCode.G))
 		{
-			hook.transform.position = transform.position;
+			hook.transform.position = new Vector3(transform.position.x+1,transform.position.y,transform.position.z);
 			//Instantiate(rope, hook.transform.position, new Quaternion(0,0,0,0));
 			//Instantiate(hook, new Vector3(transform.position.x, transform.position.y, transform.position.z), new Quaternion(0,0,0,0));
 			isHookFired = true;
@@ -64,7 +64,7 @@ public class GrapplingHook : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D other)
-	{
+	{ 
 		if(other.gameObject.tag == "Grounded")
 		{
 			//hook.rigidbody.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezePositionY;

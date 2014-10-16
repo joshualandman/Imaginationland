@@ -114,12 +114,12 @@ public class CharacterController : MonoBehaviour {
 			Destroy(other.gameObject);
 			power = "CAPE";
 		}
-		if(other.gameObject.name == "Floor")
+		/*if(other.gameObject.name == "Floor")
 		{
 			hasFloor = true;
 			numberOfPillows++;
 			Destroy(other.gameObject);
-		}
+		}*/
 		//If the player touches the hook image at the end of the level then destroy it and allow them to use the Grapple Hook script
 		if (other.gameObject.name == "HookImage")
 		{
