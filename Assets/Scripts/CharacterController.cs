@@ -19,16 +19,19 @@ public class CharacterController : MonoBehaviour {
 	public bool moveRight = true;
 	public GameObject grappleText;
 	public GameObject winText;
+	private Animator anim;
 
 	// Use this for initialization
 	void Start () {
 		col = oneWay.GetComponent<EdgeCollider2D>();
+
+		// Get the Animator component from the gameObject
+		anim = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKey(KeyCode.D))
-		{
+		if (Input.GetKey (KeyCode.D)) {
 			Vector3 temp = transform.position;
 			temp.x += 0.1f;
 			transform.position = temp;
@@ -72,10 +75,35 @@ public class CharacterController : MonoBehaviour {
 			col.enabled = true;
 		}
 
+		CheckAnimationKeys ();
 		ProjectPlaceBlock ();
 		PlaceBlock();
 		Win();
 		Escape ();
+	}
+
+	//Check the input keys to animate properly
+	void CheckAnimationKeys()
+	{
+		//The D key walks to the right
+		if(Input.GetKeyDown(KeyCode.D))
+		{
+			anim.SetBool("isWalkingRight", true);
+		}
+		if(Input.GetKeyUp (KeyCode.D))
+		{
+			anim.SetBool ("isWalkingRight", false);
+		}
+
+		//The A key walks to the left
+		if(Input.GetKeyDown(KeyCode.A))
+		{
+			anim.SetBool("isWalkingLeft", true);
+		}
+		if(Input.GetKeyUp (KeyCode.A))
+		{
+			anim.SetBool ("isWalkingLeft", false);
+		}
 	}
 
 	//Display win text
