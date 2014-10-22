@@ -7,13 +7,10 @@ public class PickUp : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D other)
 	{
-		Debug.Log ("H");
-		if(other.gameObject.name == "Pillow")
+		if(other.gameObject.name == "Pillow" || other.gameObject.name == "Pillow2(Clone)" )
 		{
-
-			//player.hasFloor = true;
-			player.numberOfPillows++;
 			Destroy(other.gameObject);
+			player.numberOfPillows++;
 		}
 	}
 }
