@@ -89,7 +89,7 @@ public class GrapplingHook : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D other)
 	{ 
-		if(other.gameObject.name == "Hook2")
+		if(other.gameObject.name == "Hand")
 		{
 			timer = 0;
 			hook.transform.position = hookStart;

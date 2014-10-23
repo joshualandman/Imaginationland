@@ -216,7 +216,7 @@ public class CharacterController : MonoBehaviour {
 			Destroy(other.gameObject);
 		}
 		//If the player touches the hook image at the end of the level then destroy it and allow them to use the Grapple Hook script
-		if (other.gameObject.name == "HookImage")
+		if (other.gameObject.name == "HandImage")
 		{
 			Instantiate(grappleText, new Vector3(22, -1.7f, 0), new Quaternion(0,0,0,0));
 			Destroy(other.gameObject);
