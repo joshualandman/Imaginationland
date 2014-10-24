@@ -209,6 +209,10 @@ public class CharacterController : MonoBehaviour {
 			numberOfPillows++;
 			Destroy(other.gameObject);
 		}
+		if(other.gameObject.name == "Door")
+		{
+			Application.LoadLevel("2");
+		}
 		//If the player touches the hook image at the end of the level then destroy it and allow them to use the Grapple Hook script
 		if (other.gameObject.name == "HandImage")
 		{
