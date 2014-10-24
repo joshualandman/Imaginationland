@@ -12,6 +12,9 @@ public class GrapplingHook : MonoBehaviour {
 	private Vector3 hookStart = new Vector3(0,-20,0); // position off screen for the hook
 	private double timer = 0.0; // timer for the hook to be out
 
+	private float speedY = 0;
+	private float speedX = 0;
+
 	void Start()
 	{
 		//turn the rope off at the beginning
@@ -32,51 +35,69 @@ public class GrapplingHook : MonoBehaviour {
 			rope.SetPosition(0, player.transform.position); // connect rope to player
 			rope.SetPosition(1, hook.transform.position); // connect rope to the hook
 
-			//if the player is moving right
-			if(GetComponent<CharacterController>().moveRight)
+			if(timer < 30)
 			{
-				pos.x += 0.3f; //have hook shoot in front of player
-			}
-			else
-			{
-				pos.x -= 0.3f; //have hook shoot behind the player
-			}
+				pos.x += speedX;
+				pos.y += speedY;
 
-			hook.transform.position = pos; //set hook equal to teporary
-			hook.transform.position = hook.transform.position;
-
+			}
 			if(timer >= 30.0)
 			{
-				//hook gets caughter on return, we may neeed to turn off collision on the return
-
-				if(hook.transform.position.x > player.transform.position.x) // if hook is in front of the player, come towards player
-				{
-					pos.x -= 0.5f;
-				}
-				else if(hook.transform.position.x < player.transform.position.x) // if hook is behind the player, come towards the player
-				{
-					pos.x += 0.5f;
-				}
-				
-				hook.transform.position = pos; //set hook equal to teporary
+				//hook gets caught on return, we may neeed to turn off collision on the return
+				pos.x -= speedX;
+				pos.y -= speedY;
 			}
+			if(timer == 66) // After a long period of time, if the hand is still in motion make it go back to the player to be picked up (hand got stuck)
+			{
+				pos.x = transform.position.x;
+				pos.y = transform.position.y;
+			}
+			hook.transform.position = pos; //set hook equal to teporary
 		}
 	}
 
 	void LaunchHook()
 	{
-		if(Input.GetKeyUp(KeyCode.G))//when the player presses G
+		if(Input.GetKeyUp(KeyCode.Mouse1))//when the player presses G
 		{
-			if(GetComponent<CharacterController>().moveRight) //if they're facing forward, shoot right
+			
+			isHookFired = true; // hook is being fired
+
+			//Calculate the speeds that should be used to reach target
+			var x = Input.mousePosition.x;
+			var y = Input.mousePosition.y;
+			Vector3 newVector = Camera.main.ScreenToWorldPoint(new Vector3 (x, y, 1));
+
+			float xdiff = newVector.x - player.transform.position.x;
+			float ydiff = newVector.y - player.transform.position.y;
+
+			speedX = xdiff/30.0f;
+			speedY = ydiff/30.0f;
+
+			var xHand = transform.position.x;
+			var yHand = transform.position.y;
+
+			if(speedX > 0.05) //if they click to the right of the player then make the hand appear to the right
 			{
-				hook.transform.position = new Vector3(transform.position.x+2,transform.position.y,transform.position.z);
+				xHand += .9f;
 			}
-			else//otherwise shoot left
+			else if( speedX < -0.05)//if they click to the left of the player then make the hand appear to the left
 			{
-				hook.transform.position = new Vector3(transform.position.x-2,transform.position.y,transform.position.z);
+				xHand -= .9f;
 			}
 
-			isHookFired = true; // hook is being fired
+			if( speedY > 0.05) //if they click above the player then make the hand appear above
+			{
+				yHand += 1.2f;
+			}
+			else if( speedY < -0.05)//if they click below the player then make the hand appear below
+			{
+				yHand -= 1.8f;
+			}
+
+			//make the hand appear at the appropriate place around the player
+			hook.transform.position = new Vector3(xHand, yHand,-1);
+
 		}
 
 		if(Input.GetKeyUp(KeyCode.T))// if the player presses T

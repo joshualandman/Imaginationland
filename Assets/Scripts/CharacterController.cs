@@ -147,19 +147,18 @@ public class CharacterController : MonoBehaviour {
 		}
 	}
 
-	//If the player releases the Space key then place a block
+	//If the player releases the left mouse button then place a block
 	void PlaceBlock ()
 	{
-		if(numberOfPillows > 0 && Input.GetKeyUp(KeyCode.Space))
+		if(numberOfPillows > 0 && Input.GetKeyUp(KeyCode.Mouse0))
 		{
-			if(moveRight)
-			{
-				Instantiate(malleableFloor, new Vector3(transform.position.x + 2, transform.position.y + .3f, transform.position.z), new Quaternion(0,0,0,0));
-			}
-			else
-			{
-				Instantiate(malleableFloor, new Vector3(transform.position.x - 2, transform.position.y + .3f, transform.position.z), new Quaternion(0,0,0,0));
-			}
+			//Get the mouse position on the screen and place a pillow there
+			var x = Input.mousePosition.x;
+			var y = Input.mousePosition.y;
+			
+			Vector3 newVector = Camera.main.ScreenToWorldPoint(new Vector3 (x, y, 1));
+
+			Instantiate(malleableFloor, newVector, new Quaternion(0,0,0,0));
 
 			numberOfPillows--;
 
@@ -167,25 +166,20 @@ public class CharacterController : MonoBehaviour {
 		}
 	}
 
-	//If the player holds the space key then a line will be shown of the projected path that the block will take to be placed
+	//If the player holds the left mouse button then a line will be shown of the projected path that the block will take to be placed
 	void ProjectPlaceBlock()
 	{
-		if (numberOfPillows > 0 && Input.GetKey(KeyCode.Space))
+		if (numberOfPillows > 0 && Input.GetKey(KeyCode.Mouse0))
 		{
-			Vector3 mp;
+			//Get the mous polition and draw a line to it from the player
+			var x = Input.mousePosition.x;
+			var y = Input.mousePosition.y;
+
+			Vector3 newVector = Camera.main.ScreenToWorldPoint(new Vector3 (x, y, 1));
+			
 			projLine.SetPosition(0, transform.position);
-			if(moveRight)
-			{
-				mp = new Vector3(transform.position.x + 2, transform.position.y + .3f, transform.position.z);
-			}
-			else
-			{
-				mp = new Vector3(transform.position.x - 2, transform.position.y + .3f, transform.position.z);
-			}
 
-
-			mp.z = 0;
-			projLine.SetPosition(1, mp);
+			projLine.SetPosition(1, newVector);
 			projLine.enabled = true;
 		}
 	}
