@@ -8,7 +8,7 @@ public class Instructions : MonoBehaviour {
 	void Update()
 	{
 		count += Time.deltaTime;
-		if(count >= 5.0)
+		if(count >= 20.0)
 		{
 			Application.LoadLevel("Game");
 		}
