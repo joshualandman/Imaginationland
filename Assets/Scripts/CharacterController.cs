@@ -211,12 +211,19 @@ public class CharacterController : MonoBehaviour {
 		}
 		if(other.gameObject.name == "Door")
 		{
-			Application.LoadLevel("2");
+			Application.LoadLevel("Joshua");
+		}
+		if (other.gameObject.name == "Door2")
+		{
+			Application.LoadLevel("Chris");
+		}
+		if (other.gameObject.name == "Door3")
+		{
+			Application.LoadLevel("End");
 		}
 		//If the player touches the hook image at the end of the level then destroy it and allow them to use the Grapple Hook script
 		if (other.gameObject.name == "HandImage")
 		{
-			Instantiate(grappleText, new Vector3(22, -1.7f, 0), new Quaternion(0,0,0,0));
 			Destroy(other.gameObject);
 			GetComponent<GrapplingHook>().enabled = true;
 		}
