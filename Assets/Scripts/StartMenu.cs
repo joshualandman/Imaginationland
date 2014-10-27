@@ -16,7 +16,7 @@ public class StartMenu : MonoBehaviour {
 
 	void OnGUI()
 	{
-		if(GUI.Button( new Rect(Screen.height/2, Screen.width/2, 300, 100), "START"))
+		if(GUI.Button( new Rect(Screen.width/2 - 150, Screen.height - 100, 300, 100), "START"))
 		{
 			isClicked = true;
 		}
